@@ -1,55 +1,30 @@
-import os
+#!/usr/bin/env python3
 
+import os
 from setuptools import setup, find_packages
 
-
-with open('VERSION', 'r') as f:
-    version = f.read().rstrip()
-
-# TODO: read from requirements.txt
-install_requires = [
-    'numpy',
-    'scikit-learn>=0.18',
-    'scipy',
-    'tabulate',
-    'tqdm',
-]
-
-tests_require = [
-    'pytest',
-    'pytest-cov',
-]
-
-docs_require = [
-    'Sphinx',
-    'sphinx_rtd_theme',
-    'numpydoc',
-]
-
-here = os.path.abspath(os.path.dirname(__file__))
-try:
-    README = open(os.path.join(here, 'README.rst')).read()
-except IOError:
-    README = ''
-
-try:
-    CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
-except IOError:
-    CHANGES = ''
-
 setup(
-    name='skorch',
-    version=version,
-    description='scikit-learn compatible neural network library for pytorch',
-    long_description=README,
-    license='new BSD 3-Clause',
+    name="gpwrapper",
+    version="0.0.1",
+    description="A Scikit-Learn-style wrapper around GPyTorch",
+    author="Geoff Pleiss, Jake Gardner, Sirui Li",
+    url="https://gpytorch.ai",
+    author_email="gpleiss@gmail.com, jrg365@cornell.edu, sirui.li@wustl.edu",
+    project_urls={
+        "Documentation": "https://gpytorch.readthedocs.io",
+        "Source": "https://github.com/cornellius-gp/gpytorch/",
+    },
+    license="MIT",
+    classifiers=["Development Status :: 2 - Pre-Alpha", "Programming Language :: Python :: 3"],
     packages=find_packages(),
-    include_package_data=True,
-    url="https://github.com/dnouri/skorch",
-    zip_safe=False,
-    install_requires=install_requires,
+    python_requires=">=3.6",
+    install_requires=[
+        "torch>=1.0.0",
+        "gpytorch>=0.1.1",
+        "skorch>=0.5.0",
+        "scipy>=1.1.0",
+        "scikit-learn>=0.19.1",
+    ],
     extras_require={
-        'testing': tests_require,
-        'docs': docs_require,
     },
 )
